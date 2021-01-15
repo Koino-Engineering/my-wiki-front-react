@@ -1,0 +1,12 @@
+version: "3"
+volumes:
+    dummy:
+services:
+  front:
+    image: node:fermium
+    volumes:
+      - ./:/src
+    working_dir: /src/src
+    command: tail -f /dev/null
+    ports: 
+      - 3000:3000
