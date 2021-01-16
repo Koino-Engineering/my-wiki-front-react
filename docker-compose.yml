@@ -1,11 +1,12 @@
 version: "3"
 volumes:
-    dummy:
+    node_modules_front:
 services:
   front:
     image: node:fermium
     volumes:
       - ./:/src
+      - node_modules_front:/src/node_modules
     working_dir: /src/src
     command: tail -f /dev/null
     ports: 
