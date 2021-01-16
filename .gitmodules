@@ -1,3 +1,0 @@
-[submodule "modules/api"]
-	path = modules/api
-	url = git@github.com:Koino-Engineering/my-wiki-api-typescript.git
