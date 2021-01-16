@@ -1,10 +1,6 @@
 version: "3"
 services:
-  api:
-    build: ./modules/api
-    volumes:
-      - ./modules/api:/src
   back:
-    build: ./modules/api/modules/back/
+    build: ./modules/back/
     volumes:
-      - ./modules/api/modules/back/:/src
+      - ./modules/back/:/src
