@@ -13,7 +13,14 @@ echo "waiting up end"
 sleep 30
 
 echo "Regeneration"
-./dc.sh run --rm api generate -i http://back:5000/swagger.json -l typescript-fetch -o /src/src/modules/api
+./dc.sh \
+    run --rm \
+    api generate \
+    -i http://back:5000/swagger.json \
+    -l typescript-fetch \
+    -c /src/swagger-config.json \
+    -o /src/src/modules/api \
+    --type-mappings Date=string
 
 echo "compose down"
 ./dc.sh down

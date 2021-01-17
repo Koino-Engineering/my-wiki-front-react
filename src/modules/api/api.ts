@@ -98,22 +98,22 @@ export interface Article {
     description: string;
     /**
      * 
-     * @type {Date}
+     * @type {string}
      * @memberof Article
      */
-    createdAt?: Date;
+    created_at?: string;
     /**
      * 
-     * @type {Date}
+     * @type {string}
      * @memberof Article
      */
-    updatedAt?: Date;
+    updated_at?: string;
     /**
      * 
-     * @type {Date}
+     * @type {string}
      * @memberof Article
      */
-    deletedAt?: Date;
+    deleted_at?: string;
     /**
      * 
      * @type {string}
@@ -125,19 +125,19 @@ export interface Article {
      * @type {number}
      * @memberof Article
      */
-    createUser?: number;
+    create_user?: number;
     /**
      * 
      * @type {number}
      * @memberof Article
      */
-    updateUser?: number;
+    update_user?: number;
     /**
      * 
      * @type {number}
      * @memberof Article
      */
-    deleteUser?: number;
+    delete_user?: number;
 }
 
 /**
