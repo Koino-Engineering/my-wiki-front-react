@@ -3,6 +3,37 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ApiApi, ApiTokenAuthApi } from "./modules/api";
+
+new ApiTokenAuthApi(undefined, "/api")
+  .apiTokenAuthCreate({
+    password: "adminadmin",
+    username: "admin"
+  })
+  .then(res => {
+    new ApiApi({}, "/api")
+      .apiArticlesList(undefined, {
+        headers: {
+          "Authorization": "Token " + res.token
+        }
+      })
+      .then((res) => {
+        console.log(res)
+        console.log(res.results.map(r => r.createdAt));
+      })
+      .catch(async e => {
+        console.log(e)
+        const text = await e.text()
+        console.log(text)
+      });
+
+
+  })
+  .catch(async e => {
+    console.log(e)
+    const text = await e.text()
+    console.log(text)
+  });
 
 ReactDOM.render(
   <React.StrictMode>

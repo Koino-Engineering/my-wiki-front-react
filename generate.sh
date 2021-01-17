@@ -13,7 +13,7 @@ echo "waiting up end"
 sleep 30
 
 echo "Regeneration"
-./dc.sh exec api generate -i http://back:5000/swagger.json -l typescript-fetch -o ./src/modules/api
+./dc.sh run --rm api generate -i http://back:5000/swagger.json -l typescript-fetch -o /src/src/modules/api
 
 echo "compose down"
 ./dc.sh down
