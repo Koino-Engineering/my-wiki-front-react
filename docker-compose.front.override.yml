@@ -4,3 +4,10 @@ services:
     build: ./modules/back/
     volumes:
       - ./modules/back/:/src
+  api:
+    image: swaggerapi/swagger-codegen-cli
+    volumes:
+      - ./:/src
+    command: ["generate", "-i", "http://back:5000/swagger.json", "-l", "typescript-fetch", "-o", "/src/src/modules/api"]
+    depends_on: 
+      - back

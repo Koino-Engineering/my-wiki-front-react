@@ -11,9 +11,3 @@ services:
     command: tail -f /dev/null
     ports: 
       - 3000:3000
-  api:
-    build: ./
-    volumes:
-      - ./:/src
-    working_dir: /src
-    entrypoint: tail -f /dev/null
