@@ -1,0 +1,24 @@
+name: Create Release
+
+on: 
+  push:
+    branches:
+      - master
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+    - name: GET Now
+      run: echo ::set-output name=NOW::$(date '+%Y%m%d%H%M%S')
+      id: now
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.now.outputs.NOW }}
+        release_name: Release ${{ steps.now.outputs.NOW }}
+        draft: false
+        prerelease: false

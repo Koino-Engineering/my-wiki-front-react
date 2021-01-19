@@ -1,0 +1,3 @@
+[submodule "modules/back"]
+	path = modules/back
+	url = git@github.com:Koino-Engineering/my-wiki-back-django.git
