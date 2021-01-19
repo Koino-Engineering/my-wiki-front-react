@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ApiApi, ApiTokenAuthApi } from "./modules/api";
-
+import { polyfill } from "es6-promise";
+polyfill()
 new ApiTokenAuthApi(undefined, "/api")
   .apiTokenAuthCreate({
     password: "adminadmin",
