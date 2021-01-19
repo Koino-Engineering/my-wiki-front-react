@@ -1,12 +1,17 @@
+import { Action, ThunkDispatch } from '@reduxjs/toolkit';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import actions from './Action';
 import './App.css';
 import logo from './logo.svg';
 import { ApiApi, ApiTokenAuthApi } from "./modules/api";
+import State from './state';
 
 
 const ACCESS_TOKEN_KEY = "ACCESS_TOKEN";
 
 function App() {
+  const dispatch = useDispatch<ThunkDispatch<State, {}, Action>>();
   const [state, setState] = useState<string>("");
   useEffect(() => {
     getAccessToken()
@@ -32,6 +37,7 @@ function App() {
       });
 
   }, [])
+  dispatch(actions.asyncTest())
   return (
     <div className="App">
       <header className="App-header">
