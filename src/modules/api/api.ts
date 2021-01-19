@@ -1,6 +1,4 @@
 /// <reference path="./custom.d.ts" />
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
 // tslint:disable
 /**
  * Snippets API
