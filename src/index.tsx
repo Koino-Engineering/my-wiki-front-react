@@ -5,35 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { polyfill } from "es6-promise";
 polyfill()
-new ApiTokenAuthApi(undefined, "/api")
-  .apiTokenAuthCreate({
-    password: "adminadmin",
-    username: "admin"
-  })
-  .then(res => {
-    new ApiApi({}, "/api")
-      .apiArticlesList(undefined, {
-        headers: {
-          "Authorization": "Token " + res.token
-        }
-      })
-      .then((res) => {
-        console.log(res)
-        console.log(res.results.map(r => r.createdAt));
-      })
-      .catch(async e => {
-        console.log(e)
-        const text = await e.text()
-        console.log(text)
-      });
-
-
-  })
-  .catch(async e => {
-    console.log(e)
-    const text = await e.text()
-    console.log(text)
-  });
 
 ReactDOM.render(
   <React.StrictMode>
