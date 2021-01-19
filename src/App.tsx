@@ -21,23 +21,23 @@ function App() {
             headers: {
               "Authorization": "Token " + accessToken
             }
-          })
+          });
       })
       .then((res) => {
-        console.log(res)
-        setState(JSON.stringify(res))
+        console.log(res);
+        setState(JSON.stringify(res));
       })
       .catch(async e => {
-        console.log(e)
+        console.log(e);
         e
           .text()
           .then((text: string) => {
-            console.log(text)
-          })
+            console.log(text);
+          });
       });
 
-  }, [])
-  dispatch(actions.asyncTest())
+  }, []);
+  dispatch(actions.asyncTest());
   return (
     <div className="App">
       <header className="App-header">
@@ -64,7 +64,7 @@ function App() {
 export default App;
 
 const getAccessToken = async () => {
-  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY)
+  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
   return accessToken || new ApiTokenAuthApi(undefined, "/api")
     .apiTokenAuthCreate({
       password: "adminadmin",
@@ -72,14 +72,14 @@ const getAccessToken = async () => {
     })
     .then(res => {
       if (res.token) {
-        localStorage.setItem(ACCESS_TOKEN_KEY, res.token)
+        localStorage.setItem(ACCESS_TOKEN_KEY, res.token);
         return res.token;
       } else {
-        throw new Error("Token is blank")
+        throw new Error("Token is blank");
       }
     })
     .catch(async e => {
-      console.log(e)
-      return ""
+      console.log(e);
+      return "";
     });
-}
+};

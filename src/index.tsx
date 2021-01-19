@@ -6,7 +6,7 @@ import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { history, StoreConfiguration } from './state';
-polyfill()
+polyfill();
 
 const store = StoreConfiguration(history);
 

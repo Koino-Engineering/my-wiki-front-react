@@ -13,8 +13,8 @@ export const StoreConfiguration = (history: H.History) => {
             routerMiddleware(history),
         ]),
         devTools: process.env.NODE_ENV === "development",
-    })
-}
+    });
+};
 
 
 interface State {

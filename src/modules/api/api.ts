@@ -63,7 +63,7 @@ export class BaseAPI {
             this.basePath = configuration.basePath || this.basePath;
         }
     }
-};
+}
 
 /**
  *
@@ -999,7 +999,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
                 options: localVarRequestOptions,
             };
         },
-    }
+    };
 };
 
 /**
@@ -1338,7 +1338,7 @@ export const ApiApiFp = function (configuration?: Configuration) {
                 });
             };
         },
-    }
+    };
 };
 
 /**
@@ -1774,7 +1774,7 @@ export const ApiTokenAuthApiFetchParamCreator = function (configuration?: Config
                 options: localVarRequestOptions,
             };
         },
-    }
+    };
 };
 
 /**
@@ -1801,7 +1801,7 @@ export const ApiTokenAuthApiFp = function (configuration?: Configuration) {
                 });
             };
         },
-    }
+    };
 };
 
 /**
