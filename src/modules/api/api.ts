@@ -55,7 +55,7 @@ export interface FetchArgs {
  * @class BaseAPI
  */
 export class BaseAPI {
-    protected configuration: Configuration;
+    protected configuration?: Configuration;
 
     constructor(configuration?: Configuration, protected basePath: string = BASE_PATH, protected fetch: FetchAPI = portableFetch) {
         if (configuration) {
@@ -72,7 +72,7 @@ export class BaseAPI {
  * @extends {Error}
  */
 export class RequiredError extends Error {
-    name: "RequiredError"
+    name!: "RequiredError"
     constructor(public field: string, msg?: string) {
         super(msg);
     }
@@ -98,22 +98,22 @@ export interface Article {
     description: string;
     /**
      * 
-     * @type {string}
+     * @type {Date}
      * @memberof Article
      */
-    created_at?: string;
+    createdAt?: Date;
     /**
      * 
-     * @type {string}
+     * @type {Date}
      * @memberof Article
      */
-    updated_at?: string;
+    updatedAt?: Date;
     /**
      * 
-     * @type {string}
+     * @type {Date}
      * @memberof Article
      */
-    deleted_at?: string;
+    deletedAt?: Date;
     /**
      * 
      * @type {string}
@@ -125,19 +125,19 @@ export interface Article {
      * @type {number}
      * @memberof Article
      */
-    create_user?: number;
+    createUser?: number;
     /**
      * 
      * @type {number}
      * @memberof Article
      */
-    update_user?: number;
+    updateUser?: number;
     /**
      * 
      * @type {number}
      * @memberof Article
      */
-    delete_user?: number;
+    deleteUser?: number;
 }
 
 /**
@@ -336,7 +336,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
         apiArticlesCreate(data: Article, options: any = {}): FetchArgs {
             // verify required parameter 'data' is not null or undefined
             if (data === null || data === undefined) {
-                throw new RequiredError('data','Required parameter data was null or undefined when calling apiArticlesCreate.');
+                throw new RequiredError('data', 'Required parameter data was null or undefined when calling apiArticlesCreate.');
             }
             const localVarPath = `/api/articles/`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -357,7 +357,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"Article" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(data || {}) : (data || "");
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : (data || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -373,7 +373,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
         apiArticlesDelete(id: number, options: any = {}): FetchArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling apiArticlesDelete.');
+                throw new RequiredError('id', 'Required parameter id was null or undefined when calling apiArticlesDelete.');
             }
             const localVarPath = `/api/articles/{id}/`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -441,11 +441,11 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
         apiArticlesPartialUpdate(id: number, data: Article, options: any = {}): FetchArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling apiArticlesPartialUpdate.');
+                throw new RequiredError('id', 'Required parameter id was null or undefined when calling apiArticlesPartialUpdate.');
             }
             // verify required parameter 'data' is not null or undefined
             if (data === null || data === undefined) {
-                throw new RequiredError('data','Required parameter data was null or undefined when calling apiArticlesPartialUpdate.');
+                throw new RequiredError('data', 'Required parameter data was null or undefined when calling apiArticlesPartialUpdate.');
             }
             const localVarPath = `/api/articles/{id}/`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -467,7 +467,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"Article" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(data || {}) : (data || "");
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : (data || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -483,7 +483,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
         apiArticlesRead(id: number, options: any = {}): FetchArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling apiArticlesRead.');
+                throw new RequiredError('id', 'Required parameter id was null or undefined when calling apiArticlesRead.');
             }
             const localVarPath = `/api/articles/{id}/`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -518,11 +518,11 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
         apiArticlesUpdate(id: number, data: Article, options: any = {}): FetchArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling apiArticlesUpdate.');
+                throw new RequiredError('id', 'Required parameter id was null or undefined when calling apiArticlesUpdate.');
             }
             // verify required parameter 'data' is not null or undefined
             if (data === null || data === undefined) {
-                throw new RequiredError('data','Required parameter data was null or undefined when calling apiArticlesUpdate.');
+                throw new RequiredError('data', 'Required parameter data was null or undefined when calling apiArticlesUpdate.');
             }
             const localVarPath = `/api/articles/{id}/`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -544,7 +544,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"Article" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(data || {}) : (data || "");
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : (data || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -560,7 +560,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
         apiGroupsCreate(data: Group, options: any = {}): FetchArgs {
             // verify required parameter 'data' is not null or undefined
             if (data === null || data === undefined) {
-                throw new RequiredError('data','Required parameter data was null or undefined when calling apiGroupsCreate.');
+                throw new RequiredError('data', 'Required parameter data was null or undefined when calling apiGroupsCreate.');
             }
             const localVarPath = `/api/groups/`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -581,7 +581,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"Group" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(data || {}) : (data || "");
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : (data || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -597,7 +597,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
         apiGroupsDelete(id: number, options: any = {}): FetchArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling apiGroupsDelete.');
+                throw new RequiredError('id', 'Required parameter id was null or undefined when calling apiGroupsDelete.');
             }
             const localVarPath = `/api/groups/{id}/`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -665,11 +665,11 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
         apiGroupsPartialUpdate(id: number, data: Group, options: any = {}): FetchArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling apiGroupsPartialUpdate.');
+                throw new RequiredError('id', 'Required parameter id was null or undefined when calling apiGroupsPartialUpdate.');
             }
             // verify required parameter 'data' is not null or undefined
             if (data === null || data === undefined) {
-                throw new RequiredError('data','Required parameter data was null or undefined when calling apiGroupsPartialUpdate.');
+                throw new RequiredError('data', 'Required parameter data was null or undefined when calling apiGroupsPartialUpdate.');
             }
             const localVarPath = `/api/groups/{id}/`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -691,7 +691,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"Group" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(data || {}) : (data || "");
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : (data || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -707,7 +707,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
         apiGroupsRead(id: number, options: any = {}): FetchArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling apiGroupsRead.');
+                throw new RequiredError('id', 'Required parameter id was null or undefined when calling apiGroupsRead.');
             }
             const localVarPath = `/api/groups/{id}/`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -742,11 +742,11 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
         apiGroupsUpdate(id: number, data: Group, options: any = {}): FetchArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling apiGroupsUpdate.');
+                throw new RequiredError('id', 'Required parameter id was null or undefined when calling apiGroupsUpdate.');
             }
             // verify required parameter 'data' is not null or undefined
             if (data === null || data === undefined) {
-                throw new RequiredError('data','Required parameter data was null or undefined when calling apiGroupsUpdate.');
+                throw new RequiredError('data', 'Required parameter data was null or undefined when calling apiGroupsUpdate.');
             }
             const localVarPath = `/api/groups/{id}/`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -768,7 +768,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"Group" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(data || {}) : (data || "");
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : (data || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -784,7 +784,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
         apiUsersCreate(data: User, options: any = {}): FetchArgs {
             // verify required parameter 'data' is not null or undefined
             if (data === null || data === undefined) {
-                throw new RequiredError('data','Required parameter data was null or undefined when calling apiUsersCreate.');
+                throw new RequiredError('data', 'Required parameter data was null or undefined when calling apiUsersCreate.');
             }
             const localVarPath = `/api/users/`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -805,7 +805,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(data || {}) : (data || "");
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : (data || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -821,7 +821,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
         apiUsersDelete(id: number, options: any = {}): FetchArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling apiUsersDelete.');
+                throw new RequiredError('id', 'Required parameter id was null or undefined when calling apiUsersDelete.');
             }
             const localVarPath = `/api/users/{id}/`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -889,11 +889,11 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
         apiUsersPartialUpdate(id: number, data: User, options: any = {}): FetchArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling apiUsersPartialUpdate.');
+                throw new RequiredError('id', 'Required parameter id was null or undefined when calling apiUsersPartialUpdate.');
             }
             // verify required parameter 'data' is not null or undefined
             if (data === null || data === undefined) {
-                throw new RequiredError('data','Required parameter data was null or undefined when calling apiUsersPartialUpdate.');
+                throw new RequiredError('data', 'Required parameter data was null or undefined when calling apiUsersPartialUpdate.');
             }
             const localVarPath = `/api/users/{id}/`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -915,7 +915,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(data || {}) : (data || "");
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : (data || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -931,7 +931,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
         apiUsersRead(id: number, options: any = {}): FetchArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling apiUsersRead.');
+                throw new RequiredError('id', 'Required parameter id was null or undefined when calling apiUsersRead.');
             }
             const localVarPath = `/api/users/{id}/`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -966,11 +966,11 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
         apiUsersUpdate(id: number, data: User, options: any = {}): FetchArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling apiUsersUpdate.');
+                throw new RequiredError('id', 'Required parameter id was null or undefined when calling apiUsersUpdate.');
             }
             // verify required parameter 'data' is not null or undefined
             if (data === null || data === undefined) {
-                throw new RequiredError('data','Required parameter data was null or undefined when calling apiUsersUpdate.');
+                throw new RequiredError('data', 'Required parameter data was null or undefined when calling apiUsersUpdate.');
             }
             const localVarPath = `/api/users/{id}/`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -992,7 +992,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(data || {}) : (data || "");
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : (data || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -1006,7 +1006,7 @@ export const ApiApiFetchParamCreator = function (configuration?: Configuration) 
  * ApiApi - functional programming interface
  * @export
  */
-export const ApiApiFp = function(configuration?: Configuration) {
+export const ApiApiFp = function (configuration?: Configuration) {
     return {
         /**
          * API endpoint that allows users to be viewed or edited.
@@ -1746,7 +1746,7 @@ export const ApiTokenAuthApiFetchParamCreator = function (configuration?: Config
         apiTokenAuthCreate(data: AuthToken, options: any = {}): FetchArgs {
             // verify required parameter 'data' is not null or undefined
             if (data === null || data === undefined) {
-                throw new RequiredError('data','Required parameter data was null or undefined when calling apiTokenAuthCreate.');
+                throw new RequiredError('data', 'Required parameter data was null or undefined when calling apiTokenAuthCreate.');
             }
             const localVarPath = `/api-token-auth/`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -1767,7 +1767,7 @@ export const ApiTokenAuthApiFetchParamCreator = function (configuration?: Config
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"AuthToken" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(data || {}) : (data || "");
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : (data || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -1781,7 +1781,7 @@ export const ApiTokenAuthApiFetchParamCreator = function (configuration?: Config
  * ApiTokenAuthApi - functional programming interface
  * @export
  */
-export const ApiTokenAuthApiFp = function(configuration?: Configuration) {
+export const ApiTokenAuthApiFp = function (configuration?: Configuration) {
     return {
         /**
          * 
