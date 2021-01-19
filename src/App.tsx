@@ -24,15 +24,13 @@ function App() {
           });
       })
       .then((res) => {
-        console.log(res);
         setState(JSON.stringify(res));
       })
       .catch(async e => {
-        console.log(e);
         e
           .text()
           .then((text: string) => {
-            console.log(text);
+            setState(text);
           });
       });
 
@@ -77,9 +75,5 @@ const getAccessToken = async () => {
       } else {
         throw new Error("Token is blank");
       }
-    })
-    .catch(async e => {
-      console.log(e);
-      return "";
     });
 };
